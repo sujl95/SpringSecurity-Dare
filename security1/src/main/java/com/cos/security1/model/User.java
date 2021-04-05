@@ -1,6 +1,6 @@
 package com.cos.security1.model;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,5 +24,5 @@ public class User {
 	private String role; //ROLE_USER, ROLE_ADMIN
 
 	@CreationTimestamp
-	private Timestamp createDate;
+	private LocalDateTime createDate;
 }
