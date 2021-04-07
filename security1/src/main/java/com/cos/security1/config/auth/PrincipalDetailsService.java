@@ -1,4 +1,4 @@
-package com.cos.security1.auth;
+package com.cos.security1.config.auth;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
