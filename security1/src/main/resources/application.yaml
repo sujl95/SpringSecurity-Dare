@@ -26,8 +26,14 @@ spring:
       client:
         registration:
           google:
-            client-id: id
-            client-secret: secret
+            client-id:
+            client-secret:
             scope:
               - email
               - profile
+          facebook:
+            client-id:
+            client-secret:
+            scope:
+              - email
+              - public_profile
