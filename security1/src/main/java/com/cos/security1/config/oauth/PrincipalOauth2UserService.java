@@ -1,5 +1,7 @@
 package com.cos.security1.config.oauth;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -13,6 +15,7 @@ import org.springframework.util.ObjectUtils;
 import com.cos.security1.config.auth.PrincipalDetails;
 import com.cos.security1.config.oauth.provider.FaceBookInfo;
 import com.cos.security1.config.oauth.provider.GoogleUserInfo;
+import com.cos.security1.config.oauth.provider.NaverInfo;
 import com.cos.security1.config.oauth.provider.OAuth2UserInfo;
 import com.cos.security1.model.User;
 import com.cos.security1.repository.UserRepository;
@@ -42,8 +45,11 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 		} else if ("facebook".equals(userRequest.getClientRegistration().getRegistrationId())) {
 			System.out.println("페이스북 로그인 요청");
 			oAuth2UserInfo = new FaceBookInfo(oAuth2User.getAttributes());
+		} else if ("naver".equals(userRequest.getClientRegistration().getRegistrationId())) {
+			System.out.println("네이버 로그인 요청");
+			oAuth2UserInfo = new NaverInfo((Map) oAuth2User.getAttributes().get("response"));
 		} else {
-			System.out.println("구글 로그인 , 페이스북 로그인만 됩니다");
+			System.out.println("구글 , 페이스북, 네이버 로그인만 됩니다");
 		}
 
 		String provider = oAuth2UserInfo.getProvider(); // google
